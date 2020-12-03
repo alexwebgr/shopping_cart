@@ -7,10 +7,10 @@ class ShoppingCart
 
   def print_receipt
     [
-      list_items,
-      calculate_total_tax,
-      calculate_total
-    ]
+      list_items.join('\n'),
+      "Sales tax: #{calculate_total_tax}",
+      "Total: #{calculate_total}"
+    ].join('\n')
   end
 
   private
@@ -36,6 +36,7 @@ class ShoppingCart
 
   def calculate_price(item_id)
     item = items[item_id.to_sym]
+    # sprintf('%.2f', item[:price] + calculate_tax(item[:id])).to_f
     (item[:price] + calculate_tax(item[:id])).round(2)
   end
 
