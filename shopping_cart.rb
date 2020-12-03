@@ -7,10 +7,10 @@ class ShoppingCart
 
   def print_receipt
     [
-      list_items.join('\n'),
+      list_items.join(': '),
       "Sales tax: #{calculate_total_tax}",
       "Total: #{calculate_total}"
-    ].join('\n')
+    ].join(' ')
   end
 
   private
