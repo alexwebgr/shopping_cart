@@ -5,7 +5,7 @@ class ShoppingCart
 
   def list_items
     items.values.map do |item|
-      [item[:title], calculate_price(item[:id])]
+      [item[:quantity], item[:title], calculate_price(item[:id])]
     end
   end
 

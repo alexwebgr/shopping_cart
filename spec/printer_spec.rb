@@ -16,17 +16,17 @@ RSpec.describe Printer, type: :service do
 
     it 'prints the receipt for items with no import tax' do
       cart = Printer.new(Items::DOMESTIC)
-      expect(cart.print_receipt).to eq("Book: 12.49: music CD: 16.49: chocolate bar: 0.85 Sales tax: 1.5 Total: 29.83")
+      expect(cart.print_receipt).to eq("1 Book: 12.49 1 music CD: 16.49 1 chocolate bar: 0.85 Sales tax: 1.5 Total: 29.83")
     end
 
     it 'prints the receipt for items with import tax' do
       cart = Printer.new(Items::IMPORTED)
-      expect(cart.print_receipt).to eq("imported box of chocolates: 10.5: imported bottle of perfume: 54.65 Sales tax: 7.65 Total: 65.15")
+      expect(cart.print_receipt).to eq("1 imported box of chocolates: 10.5 1 imported bottle of perfume: 54.65 Sales tax: 7.65 Total: 65.15")
     end
 
     it 'prints the receipt for items with import tax and without' do
       cart = Printer.new(Items::IMPORTED_AND_DOMESTIC)
-      expect(cart.print_receipt).to eq("imported bottle of perfume: 32.19: bottle of perfume: 20.89: packet of headache pills: 9.75: imported box of chocolates: 11.8 Sales tax: 6.65 Total: 74.63")
+      expect(cart.print_receipt).to eq("1 imported bottle of perfume: 32.19 1 bottle of perfume: 20.89 1 packet of headache pills: 9.75 1 imported box of chocolates: 11.8 Sales tax: 6.65 Total: 74.63")
     end
   end
 end

@@ -12,7 +12,7 @@ RSpec.describe ShoppingCart, type: :service do
     let(:cart) { ShoppingCart.new(Items::DOMESTIC) }
 
     it 'returns the list of items' do
-      expect(cart.list_items).to eq([["Book", 12.49], ["music CD", 16.49], ["chocolate bar", 0.85]])
+      expect(cart.list_items).to eq([[1, "Book", 12.49], [1, "music CD", 16.49], [1, "chocolate bar", 0.85]])
     end
 
     it 'returns the total tax' do
@@ -28,7 +28,7 @@ RSpec.describe ShoppingCart, type: :service do
     let(:cart) { ShoppingCart.new(Items::IMPORTED) }
 
     it 'returns the list of items' do
-      expect(cart.list_items).to eq([["imported box of chocolates", 10.5], ["imported bottle of perfume", 54.65]])
+      expect(cart.list_items).to eq([[1, "imported box of chocolates", 10.5], [1, "imported bottle of perfume", 54.65]])
     end
 
     it 'returns the total tax' do
@@ -44,7 +44,7 @@ RSpec.describe ShoppingCart, type: :service do
     let(:cart) { ShoppingCart.new(Items::IMPORTED_AND_DOMESTIC) }
 
     it 'returns the list of items' do
-      expect(cart.list_items).to eq([["imported bottle of perfume", 32.19], ["bottle of perfume", 20.89], ["packet of headache pills", 9.75], ["imported box of chocolates", 11.8]])
+      expect(cart.list_items).to eq([[1, "imported bottle of perfume", 32.19], [1, "bottle of perfume", 20.89], [1, "packet of headache pills", 9.75], [1, "imported box of chocolates", 11.8]])
     end
 
     it 'returns the total tax' do

@@ -17,7 +17,7 @@ class Printer
   private
 
   def print_items
-    cart.list_items.join(': ')
+    cart.list_items.map { |item| "#{item[0]} #{item[1]}: #{item[2]}" }
   end
 
   def print_total_tax
