@@ -26,7 +26,7 @@ class ShoppingCart
 
   def calculate_tax(item_id)
     item = items[item_id.to_sym]
-    round_num((((item[:tax] + item[:import_tax]) * item[:price]) / 100) * item[:quantity], 20)
+    round_num((((item[:tax] + item[:import_tax]) * item[:price]) / 100) * item[:quantity], 0.05)
   end
 
   def calculate_price(item_id)
@@ -35,6 +35,7 @@ class ShoppingCart
   end
 
   def round_num(num, precision)
+    precision = 1 / precision
     (num * precision).round / precision.to_f
   end
 end
