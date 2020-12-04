@@ -1,7 +1,5 @@
 class ShoppingCart
-  attr_reader :items
-
-  def initialize(items = [])
+  def initialize(items)
     @items = items
   end
 
@@ -19,7 +17,12 @@ class ShoppingCart
     items.values.map { |item| calculate_price(item[:id]) }.sum
   end
 
+  def empty_cart?
+    items.empty?
+  end
+
   private
+  attr_reader :items
 
   def calculate_tax(item_id)
     item = items[item_id.to_sym]

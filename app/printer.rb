@@ -1,11 +1,12 @@
 class Printer
   attr_reader :cart
 
-  def initialize(items = [])
+  def initialize(items)
     @cart = ShoppingCart.new(items)
   end
 
   def print_receipt
+    return 'No items' if cart.empty_cart?
     [
       print_items,
       print_total_tax,

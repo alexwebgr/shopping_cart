@@ -9,6 +9,11 @@ end
 
 RSpec.describe Printer, type: :service do
   describe '#print_receipt' do
+    it 'prints a message when there are no items' do
+      cart = Printer.new({})
+      expect(cart.print_receipt).to eq('No items')
+    end
+
     it 'prints the receipt for items with no import tax' do
       cart = Printer.new(Items::DOMESTIC)
       expect(cart.print_receipt).to eq("Book: 12.49: music CD: 16.49: chocolate bar: 0.85 Sales tax: 1.5 Total: 29.83")
