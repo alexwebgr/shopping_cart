@@ -55,4 +55,20 @@ RSpec.describe ShoppingCart, type: :service do
       expect(cart.calculate_total).to eq(74.63)
     end
   end
+
+  describe 'items with multiple quantities' do
+    let(:cart) { ShoppingCart.new(Items::MULTIPLE_QUANTITIES) }
+
+    it 'returns the list of items' do
+      expect(cart.list_items).to eq([[1, "Book", 12.49], [2, "music CD", 32.98], [3, "chocolate bar", 2.55]])
+    end
+
+    it 'returns the total tax' do
+      expect(cart.calculate_total_tax).to eq(3.00)
+    end
+
+    it 'returns the total' do
+      expect(cart.calculate_total).to eq(48.02)
+    end
+  end
 end

@@ -14,7 +14,7 @@ class ShoppingCart
   end
 
   def calculate_total
-    items.values.map { |item| calculate_price(item[:id]) }.sum
+    (items.values.map { |item| item[:price] * item[:quantity] }.sum + calculate_total_tax).round(2)
   end
 
   def empty_cart?
@@ -26,12 +26,12 @@ class ShoppingCart
 
   def calculate_tax(item_id)
     item = items[item_id.to_sym]
-    round_num((((item[:tax] + item[:import_tax]) * item[:price]) / 100), 20)
+    round_num((((item[:tax] + item[:import_tax]) * item[:price]) / 100) * item[:quantity], 20)
   end
 
   def calculate_price(item_id)
     item = items[item_id.to_sym]
-    (item[:price] + calculate_tax(item[:id])).round(2)
+    ((item[:price] * item[:quantity]) + calculate_tax(item[:id])).round(2)
   end
 
   def round_num(num, precision)

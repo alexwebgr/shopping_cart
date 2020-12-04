@@ -28,5 +28,10 @@ RSpec.describe Printer, type: :service do
       cart = Printer.new(Items::IMPORTED_AND_DOMESTIC)
       expect(cart.print_receipt).to eq("1 imported bottle of perfume: 32.19 1 bottle of perfume: 20.89 1 packet of headache pills: 9.75 1 imported box of chocolates: 11.8 Sales tax: 6.65 Total: 74.63")
     end
+
+    it 'prints the receipt with multiple items' do
+      cart = Printer.new(Items::MULTIPLE_QUANTITIES)
+      expect(cart.print_receipt).to eq("1 Book: 12.49 2 music CD: 32.98 3 chocolate bar: 2.55 Sales tax: 3.0 Total: 48.02")
+    end
   end
 end
